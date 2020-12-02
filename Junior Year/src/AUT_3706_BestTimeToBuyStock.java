@@ -10,6 +10,7 @@
 //             Not 7-1 = 6, as selling price needs to be larger than buying price.
 
 import java.util.Arrays;
+import java.util.OptionalInt;
 
 public class AUT_3706_BestTimeToBuyStock {
 
@@ -17,9 +18,12 @@ public class AUT_3706_BestTimeToBuyStock {
     int[] a = {7, 1, 5, 3, 6, 4};  //5
     int[] b = {1, 2, 3, 4, 5};  //4
     int[] c = {9, 3, 1}; //0
+    int[] d = {};
     // System.out.println(buy(a));
     System.out.println(buyAndSell(b));
     System.out.println(buyAndSellII(b));
+    System.out.println(buyAndSellIIII(d));
+
   }
   //Find max profit up to certain point in the array
 
@@ -53,5 +57,16 @@ public class AUT_3706_BestTimeToBuyStock {
       }
     });
     return currMax[0];
+  }
+
+  //Applying Logic differently
+  public static OptionalInt buyAndSellIIII(int[] prices) {
+    int[] small = {Integer.MAX_VALUE};
+    return Arrays.stream(prices).map(v -> {
+      if (v < small[0]) {
+        small[0] = v;
+      }
+      return v - small[0];
+    }).max();
   }
 }
