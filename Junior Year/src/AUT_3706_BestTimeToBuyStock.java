@@ -40,7 +40,7 @@ public class AUT_3706_BestTimeToBuyStock {
   }
 
   //After Pr -with Stream
-  //Variables have to be final due concurrency issues.
+  //java throws error when mutating local variables due concurrency issues.
   //Work around by storing the values into a list
   public static int buyAndSellII(int[] prices) {
     int[] small = {Integer.MAX_VALUE};
